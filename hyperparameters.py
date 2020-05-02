@@ -1,4 +1,4 @@
-version = 1
+version = '1'
 batch_size = 64           # batch size
 vocab_threshold = 5       # minimum word count threshold
 vocab_from_file = True    # if True, load existing vocab file
@@ -10,5 +10,5 @@ print_every = 100          # determines window for printing average loss
 log_file = f'training_log_v{version}.txt'       # name of file with saved training loss and perplexity
 
 # Optimizer
-optimizer_params = dict(betas=(0.9, 0.99), weight_decay=1e-2, lr=3e-4)
-useScheduler = True
+optimizer_params = dict() #dict(betas=(0.9, 0.99), weight_decay=1e-2, lr=3e-4)
+useScheduler = False
