@@ -12,13 +12,17 @@ class EncoderCNN(nn.Module):
         modules = list(resnet.children())[:-1]
         self.resnet = nn.Sequential(*modules)
         self.embed = nn.Linear(resnet.fc.in_features, embed_size)
-
+        # batch normalization
+        self.batchNorm = nn.BatchNorm1d(embed_size,momentum = 0.01)
+        # Weights initialization
+        self.embed.weight.data.normal_(0., 0.02)
+        self.embed.bias.data.fill_(0)
+        
     def forward(self, images):
         features = self.resnet(images)
         features = features.view(features.size(0), -1)
-        features = self.embed(features)
-        return features
-    
+        features = self.batchNorm(self.embed(features))
+        return features    
     
 class DecoderRNN(nn.Module):
     def __init__(self, embed_size, hidden_size, vocab_size, num_layers=1):
