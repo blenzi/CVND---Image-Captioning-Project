@@ -1,9 +1,11 @@
-version = '1'
+version = '2'
 batch_size = 64           # batch size
 vocab_threshold = 5       # minimum word count threshold
 vocab_from_file = True    # if True, load existing vocab file
 embed_size = 512           # dimensionality of image and word embeddings
 hidden_size = 512          # number of features in hidden state of the RNN decoder
+LSTM_layers = 2            # number of LSTM layers in RNN decoder
+LSTM_dropout = 0.1         # dropout probability for each LSTM layer
 num_epochs = 1             # number of training epochs
 save_every = 1             # determines frequency of saving model weights
 print_every = 100          # determines window for printing average loss
